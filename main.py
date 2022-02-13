@@ -7,11 +7,12 @@ from replit import db
 from keep_alive import keep_alive
 from dotenv import load_dotenv
 from discord.ext import commands
+from discord.ext.commands import Bot
 import time
 load_dotenv()
 client=discord.Client()
 
-
+bot = commands.Bot(command_prefix = "!")
 sad_words =["sad","bad", "blue", "brokenhearted", "cast down", "crestfallen", "dejected", "depressed", "despondent","depressing" "disconsolate", "doleful", "down", "downcast", "downhearted", "down in the mouth", "droopy", "forlorn", "gloomy", "glum", "hangdog", "heartbroken", "heartsick", "heartsore", "heavyhearted", "inconsolable", "joyless", "low", "low-spirited", "melancholic", "melancholy", "miserable", "mournful", "saddened", "sorrowful", "sorry", "unhappy","woebegone", "woeful", "wretched"]
 
 starter_encouragements=["Cheer Up!","Hang in there","You're freakin' awesome","You can open up to me.","Give it a try."
@@ -76,6 +77,7 @@ def delete_encouragement(index):
 @client.event
 async def on_ready():
   print('I have gained sentience and logged in as {0.user}'.format(client))
+  await client.change_presence(activity=discord.Game(name="Lust from Beyond"))
 
 @client.event
 async def on_message(message):
